@@ -1,0 +1,75 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+dist-ssr
+offline-bundle
+*.local
+
+# Environment files (NEVER commit secrets)
+.env
+.env.*
+*.env.local
+.env.production
+.env.development
+
+# AI coding assistants
+.claude
+.claude*
+.cursor
+.cursor*
+.copilot
+.github/copilot*
+.aider*
+.continue
+.codeium
+.tabnine*
+.windsurf
+.sourcery
+.cody
+.amazonq
+.aws/amazonq*
+.codiumai
+.supermaven*
+**/claude_api_conversation*
+**/.aider.chat*
+**/.aider.input*
+**/.aider.tags*
+**/CLAUDE.md
+**/.cursorignore
+**/.cursorindexingignore
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Netlify
+.netlify
+
+# Test coverage
+coverage
+
+# Misc
+*.pem
+*.key
+*.crt

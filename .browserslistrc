@@ -1,0 +1,17 @@
+# Browsers that support WebGPU/WebGL + WebAssembly + SharedArrayBuffer
+# These are the minimum requirements for WebLLM to function
+
+# Desktop
+chrome >= 89
+firefox >= 89
+safari >= 15
+edge >= 89
+
+# Mobile
+ios_saf >= 15
+and_chr >= 89
+and_ff >= 89
+
+# Exclude IE and Opera Mini
+not ie <= 11
+not op_mini all

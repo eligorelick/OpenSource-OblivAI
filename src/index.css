@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --dark: #0F0F23;
+    --dark-lighter: #1A1A2E;
+    --light: #FFFFFF;
+    --light-darker: #F8F9FA;
+    --primary: #8B5CF6;
+    --primary-dark: #6D28D9;
+    --accent: #06B6D4;
+
+    /* Dark mode variables (default) */
+    --background: var(--dark);
+    --background-lighter: var(--dark-lighter);
+    --text-primary: #FFFFFF;
+    --text-secondary: #D1D5DB;
+    --text-muted: #9CA3AF;
+    --border: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+
+  .light {
+    /* Light mode variables */
+    --background: var(--light);
+    --background-lighter: var(--light-darker);
+    --text-primary: #111827;
+    --text-secondary: #374151;
+    --text-muted: #6B7280;
+    --border: rgba(0, 0, 0, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(0, 0, 0, 0.1);
+  }
+
+  /* High contrast mode support for accessibility */
+  @media (prefers-contrast: more) {
+    :root {
+      --dark: #000000;
+      --dark-lighter: #1A1A1A;
+      --light: #FFFFFF;
+      --primary: #A78BFA;
+      --primary-dark: #7C3AED;
+      --accent: #22D3EE;
+      --text-primary: #FFFFFF;
+      --text-secondary: #EEEEEE;
+      --text-muted: #CCCCCC;
+      --border: rgba(255, 255, 255, 0.3);
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.3);
+    }
+
+    .light {
+      --background: #FFFFFF;
+      --background-lighter: #F5F5F5;
+      --text-primary: #000000;
+      --text-secondary: #1A1A1A;
+      --text-muted: #333333;
+      --border: rgba(0, 0, 0, 0.3);
+      --glass-bg: rgba(255, 255, 255, 0.95);
+      --glass-border: rgba(0, 0, 0, 0.3);
+    }
+
+    /* Increase contrast for all text */
+    body {
+      font-weight: 500;
+    }
+
+    /* Stronger borders */
+    .glass {
+      border-width: 2px;
+    }
+
+    /* More visible focus indicators */
+    *:focus {
+      outline: 3px solid var(--accent) !important;
+      outline-offset: 2px;
+    }
+
+    /* Higher contrast buttons */
+    button {
+      border: 2px solid currentColor;
+    }
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Reduced motion support for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .bg-theme {
+    background-color: var(--background);
+  }
+
+  .bg-theme-lighter {
+    background-color: var(--background-lighter);
+  }
+
+  .text-theme-primary {
+    color: var(--text-primary);
+  }
+
+  .text-theme-secondary {
+    color: var(--text-secondary);
+  }
+
+  .text-theme-muted {
+    color: var(--text-muted);
+  }
+
+  .text-primary-brand {
+    color: var(--primary);
+  }
+
+  .text-accent {
+    color: var(--accent);
+  }
+
+  .glass {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+  }
+
+  .glass-hover {
+    transition: background-color 0.2s ease;
+  }
+
+  .glass-hover:hover {
+    background-color: var(--glass-bg);
+    filter: brightness(1.1);
+  }
+
+  .border-theme {
+    border-color: var(--border);
+  }
+
+  .gradient-primary {
+    background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  }
+
+  .text-gradient {
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  /* Dark mode specific styles */
+  .bg-dark {
+    background-color: var(--dark);
+  }
+
+  .bg-dark-lighter {
+    background-color: var(--dark-lighter);
+  }
+
+  /* Animation classes */
+  .theme-transition {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+}
